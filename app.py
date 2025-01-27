@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 
 GITHUB_SECRET = os.getenv('GITHUB_SECRET')
-CHANGES_ROUTE_URL = 'http://localhost:8000/changes'
+CHANGES_ROUTE_URL = 'https://finalautodoc-production.up.railway.app/changes'
 
 def verify_signature(payload, signature):
     mac = hmac.new(GITHUB_SECRET.encode(), msg=payload, digestmod=hashlib.sha1)
