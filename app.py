@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 
 GITHUB_SECRET = os.getenv('GITHUB_SECRET')
-CHANGES_ROUTE_URL = 'https://finalautodoc-production.up.railway.app/changes'
+CHANGES_ROUTE_URL = 'http://localhost:8000/changes'
 
 def verify_signature(payload, signature):
     mac = hmac.new(GITHUB_SECRET.encode(), msg=payload, digestmod=hashlib.sha1)
@@ -58,7 +58,7 @@ def github_webhook():
 
                 changes_request_data = {
                     'code_repo_id': repo_full_name,
-                    'docs_repo_id': 'ipriyanshi1708/react.dev',
+                    'docs_repo_id': 'shivamagarwal2510/react.dev',
                     'diffs': final_output,
                 }
 
