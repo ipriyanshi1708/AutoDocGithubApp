@@ -67,9 +67,12 @@ def github_webhook():
                 # Send the diff to the /changes route
                 headers = {'Content-Type': 'application/json'}
                 changes_response = requests.post(CHANGES_ROUTE_URL, json = changes_request_data, headers=headers)
+                print("changes response: ", changes_response)
                 if changes_response.status_code == 200:
+                    print("changes response success")
                     return jsonify({'status': 'success'}), 200
                 else:
+                    print("changes response error")
                     return jsonify({'error': 'Failed to send diff to /changes'}), 500
             else:
                 return jsonify({'error': 'Failed to get PR diff'}), 500
